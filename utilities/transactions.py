@@ -1,13 +1,21 @@
 class Transactions:
     def __init__(self) -> None:
-        self.__total_amount = 0
+        self.balance = 0
 
     def get_total_amount(self) -> int:
-        return self.__total_amount
+        return self.balance
 
     def add_amount(self, amount: int) -> None:
-        self.__total_amount += amount
+        if amount <= 0:
+            raise ValueError(f"amount must be greater than zero, got {amount}")
+        self.balance += amount
 
     def withdraw_amount(self, amount: int) -> None:
-        self.__total_amount -= amount
+        if amount <= 0:
+            raise ValueError(f"amount must be greater than zero, got {amount}")
+        if self.balance - amount < 0:
+            raise ValueError("insufficient funds for withdrawal")
+        self.balance -= amount
+
+
 

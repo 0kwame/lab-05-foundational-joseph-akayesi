@@ -1,6 +1,6 @@
-# Simple Transaction Utility
+# Transaction Utility
 
-This lab demonstrates how to implement a **basic transaction utility** for a financial service provider.
+This lab demonstrates how to implement a **transaction utility** for a financial service provider.
 
 The utility supports adding and withdrawing funds from an account, generates balance summaries, and is developed using **Test-Driven Development (TDD)**.
 
@@ -51,3 +51,6 @@ The utility supports adding and withdrawing funds from an account, generates bal
 - How to apply Test-Driven Development (TDD) to drive the design of features and functionality
 - The importance of keeping tests isolated and resetting state between runs
 - How structured testing leads to more reliable and maintainable code
+- How structured and systematic testing leads to more reliable and maintainable codebases
+- How to use `assertRaises` to verify that functions raise the correct exceptions in different scenarios
+- How to design stricter, more resilient business rules within functions (e.g., disallowing zero or negative amounts, preventing overdrafts), and reinforce them with targeted tests
