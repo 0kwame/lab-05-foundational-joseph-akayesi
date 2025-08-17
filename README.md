@@ -1,55 +1,53 @@
-# Simple Order Processing System
+# Simple Transaction Utility
 
-This lab demonstrates how to implement a simple transaction utility for a financial service provider. The utility supports adding and withdrawing amounts from an account, prevents overdrafts, and generates a balance summary.
+This lab demonstrates how to implement a **basic transaction utility** for a financial service provider.
+
+The utility supports adding and withdrawing funds from an account, generates balance summaries, and is developed using **Test-Driven Development (TDD)**.
 
 ---
 
 ## Prerequisites
 
-- **Python** must be installed on your computer.
-- A Python package manager like `uv` or `pip` is needed.
+- **Python** installed on your computer
+- A Python package manager such as `uv` or `pip`
 
 ---
 
 ## How to Use
 
-1.  **Initialize a virtual environment**: You can use `uv`, `pip`, or `venv` for this. The example uses `uv`:
+1. **Create a virtual environment** (example using `uv`):
 
-    ```bash
-    uv venv .venv
-    ```
+   ```bash
+   uv venv .venv
+   ```
 
-2.  **Activate the virtual environment**:
+2. **Activate the virtual environment:**
 
-    ```bash
-    source .venv/bin/activate
-    ```
+   ```bash
+   source .venv/bin/activate
+   ```
 
-3.  **Run the application**:
+3. **Run the application:**
 
-    ```bash
-    uv run main.py
-    ```
+   ```bash
+   uv run main.py
+   ```
 
-    Once the application is running, it will add incoming orders to a queue and process them in the order they were received.
+   The application will execute sample transaction operations (add and withdraw funds) and maintain an account balance.
 
----
+4. **Run the tests:**
+   ```bash
+   uv run -m unittest discover -v
+   ```
 
 ## Tools & Libraries Used
 
-- `collections.deque`: This is used to implement the queue because it provides efficient `append` and `pop` operations from both ends, which is ideal for a FIFO structure.
-- `json`: Loads a product catalogue from a JSON file into memory for product lookups.
-
----
+- **unittest**: Used to implement and run automated tests
+- **TDD workflow**: Red–Green–Refactor cycle used to guide feature development
 
 ## What I Learned
 
-- How to use Python's `deque` from the `collections` module to create an efficient FIFO queue.
-- The importance of queues as a foundational data structure in building real-time order processing systems.
-- How simple data structures can act as the backbone for larger, more complex systems.
-- How to model a product catalogue as a simple in-memory database for indexing and searching.
-- How Python dictionaries function as hash maps, enabling fast O(1) product lookups.
-- How to use typings like `Dict` to create a clear interface for a product catalogue.
-- How to implement a simple database abstraction layer using the repository pattern to handle basic data access operations for a table.
-- How to Use Private Attributes and Methods in Python’s Object-Oriented Programming
-- How to Implement the Bubble Sort Algorithm in Python to Sort a List of Items
+- How to use Python's `unittest` framework to write and execute unit tests
+- How to apply Test-Driven Development (TDD) to drive the design of features and functionality
+- The importance of keeping tests isolated and resetting state between runs
+- How structured testing leads to more reliable and maintainable code
