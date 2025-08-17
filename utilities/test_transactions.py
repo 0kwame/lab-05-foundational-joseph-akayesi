@@ -11,7 +11,7 @@ class TestTransactions(unittest.TestCase):
 
     def test_add_amount(self):
         self.t.add_amount(100)
-        self.assertEqual(self.t.get_total_amount(), 100)
+        self.assertEqual(self.t.get_balance(), 100)
 
     def test_add_negative_amount_raises(self):
         amount = -100
@@ -28,7 +28,7 @@ class TestTransactions(unittest.TestCase):
     def test_withdraw_amount(self):
         self.t.add_amount(200)
         self.t.withdraw_amount(120)
-        self.assertEqual(self.t.get_total_amount(), 80)
+        self.assertEqual(self.t.get_balance(), 80)
 
     def test_withdraw_zero_amount_raises(self):
         amount = 0
@@ -42,4 +42,10 @@ class TestTransactions(unittest.TestCase):
         with self.assertRaises(ValueError) as cm:
             self.t.withdraw_amount(250)
         self.assertEqual(str(cm.exception), "insufficient funds for withdrawal")
+
+    def test_get_summary(self):
+        self.t.add_amount(100)
+        self.t.withdraw_amount(50)
+        self.assertEqual(self.t.get_summary(), f"balance: ${self.t.get_balance()}, last transaction: -50",)
+
 
