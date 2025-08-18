@@ -44,6 +44,7 @@ The utility supports adding and withdrawing funds from an account, generates bal
 
 - **unittest**: Used to implement and run automated tests
 - **TDD workflow**: Red–Green–Refactor cycle used to guide feature development
+- **unittest.mock** – Mocking library used to simulate objects and verify interactions.
 
 ## What I Learned
 
@@ -54,3 +55,6 @@ The utility supports adding and withdrawing funds from an account, generates bal
 - How structured and systematic testing leads to more reliable and maintainable codebases
 - How to use `assertRaises` to verify that functions raise the correct exceptions in different scenarios
 - How to design stricter, more resilient business rules within functions (e.g., disallowing zero or negative amounts, preventing overdrafts), and reinforce them with targeted tests
+- How to design and use mock objects to test logging and external interactions.
+- How to leverage Optional typing in Python for clearer and safer APIs.
+- How to implement dependency injection in Python, demonstrated with the Transactions class logger.

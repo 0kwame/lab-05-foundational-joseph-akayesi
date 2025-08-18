@@ -1,4 +1,6 @@
+import logging
 import unittest
+from unittest.mock import MagicMock
 from utilities import Transactions
 
 class TestTransactions(unittest.TestCase):
@@ -7,7 +9,8 @@ class TestTransactions(unittest.TestCase):
 
     def setUp(self):
         """Run before every test"""
-        self.t = Transactions()
+        self.mock_logger = MagicMock(spec=logging.Logger)
+        self.t = Transactions(logger=self.mock_logger)
 
     def test_add_amount(self):
         self.t.add_amount(100)
@@ -48,4 +51,12 @@ class TestTransactions(unittest.TestCase):
         self.t.withdraw_amount(50)
         self.assertEqual(self.t.get_summary(), f"balance: ${self.t.get_balance()}, last transaction: -50",)
 
-
+    def test_add_amount_logs_expected_message(self):
+        amount = 100
+        self.t.add_amount(100)
+        self.mock_logger.info.assert_called_with(f"amount added. amount: +${amount}")
+        
+    def test_add_amount_triggers_logger_once(self):
+        amount = 100
+        self.t.add_amount(amount)
+        self.mock_logger.info.assert_called_once()
