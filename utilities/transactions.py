@@ -21,7 +21,12 @@ class Transactions:
         self.__balance -= amount
 
     def get_last_transaction(self):
-        return self.__transactions[-1]
+        last_transaction = None
+
+        if len(self.__transactions) > 0:
+            last_transaction = self.__transactions[-1]
+            
+        return last_transaction
     
     def get_summary(self):
         return f'balance: ${self.get_balance()}, last transaction: {self.get_last_transaction()}'

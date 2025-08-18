@@ -48,4 +48,16 @@ class TestTransactions(unittest.TestCase):
         self.t.withdraw_amount(50)
         self.assertEqual(self.t.get_summary(), f"balance: ${self.t.get_balance()}, last transaction: -50",)
 
+    def test_get_last_transaction_empty_returns_none(self):
+        self.assertEqual(self.t.get_last_transaction(), None)
+    
+    def test_multiple_transactions_balance_and_last(self):
+        self.t.add_amount(100)
+        self.t.add_amount(50)
+        self.t.withdraw_amount(30)
+        self.assertEqual(self.t.get_balance(), 120)
+        self.assertEqual(self.t.get_last_transaction(), "-30")
 
+    def test_summary_no_transactions(self):
+        summary = self.t.get_summary()
+        self.assertIn("balance: $0", summary)
