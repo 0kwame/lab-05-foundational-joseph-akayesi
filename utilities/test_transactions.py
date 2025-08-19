@@ -10,10 +10,11 @@ class TestTransactions(unittest.TestCase):
         self.t = Transactions()
 
     def test_add_amount(self):
+        amount = 100
         self.t.add_amount(100)
-        self.assertEqual(self.t.get_total_amount(), 100, "Should be 20")
+        self.assertEqual(self.t.get_total_amount(), amount, f"balance must be {amount}")
 
     def test_withdraw_amount(self):
         self.t.add_amount(200)
         self.t.withdraw_amount(120)
-        self.assertEqual(self.t.get_total_amount(), 80, "Should be 80")
+        self.assertEqual(self.t.get_total_amount(), 80, "balance must be 80")
