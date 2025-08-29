@@ -10,6 +10,7 @@ class TestTransactions(unittest.TestCase):
         self.t = Transactions()
 
     def test_add_amount(self):
+        amount = 100
         self.t.add_amount(100)
         self.assertEqual(self.t.get_balance(), 100)
 
